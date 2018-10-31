@@ -4,82 +4,85 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/css")
+
+    <style>
+        .btn-menu {
+            margin-top: 5px;
+            width: 140px;
+            margin-left: 5px;
+            background-color: #f977b5;
+        }
+
+            .btn-menu:hover {
+                background-color: #dc5093;
+            }
+
+            .det {
+                background-color: #c43565;
+            }
+    </style>
 </head>
 <body>
     <div class="wrapper">
 
         <nav id="sidebar">
             <div class="bg"></div>
-            <p class="text-center">Dummy Heading</p>
-            <ul class="list-unstyled components text-center">
+            <div class="text-center">
+                <img src="~/img/tpp.jpg" style="width:60%; height:40%; margin-top:5px; margin-bottom: 25px" />
+            </div>
 
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
+            <button id="mnuHme" name="mnuHme" type="button" class="btn btn-menu" data-whereto="@Url.Action("Index", "Home")">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </button>
+            <button id="mnuEvt"  name="mnuEvt" type="button" class="btn btn-menu" data-whereto="@Url.Action("EventCalender", "Home")">
+                <i class="fa fa-calendar"></i>
+                <span>Event Calender</span>
+            </button>
+            <button id="mnuPht" name="mnuPht" type="button" class="btn btn-menu" data-whereto="@Url.Action("PhotoGallery", "Home")">
+                <i class="fa fa-photo"></i>
+                <span>Photo Gallery</span>
+            </button>
+            <button id="mnuCru" name="mnuCru" type="button" class="btn btn-menu" data-whereto="@Url.Action("ClubRules", "Home")">
+                <i class="fa fa-warning"></i>
+                <span>Club Rules</span>
+            </button>
+            <button id="mnuCus" name="mnuCus" type="button" class="btn btn-menu" data-whereto="@Url.Action("ContactUs", "Home")">
+                <i class="fa fa-phone"></i>
+                <span>Contact Us</span>
+            </button>
         </nav>
 
         <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-                </div>
-            </nav>
-            <hr />
+
             @RenderBody()
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/jquery")
+    @Scripts.Render("~/modernizr")
+    @Scripts.Render("~/popper")
+    @Scripts.Render("~/bootstrap")
+
+
     @RenderSection("scripts", required: false)
 
-   <script type="text/javascript">
-       $(document).ready(function () {
-           $('#sidebarCollapse').on('click', function () {
-               $('#sidebar').toggleClass('active');
-               $('.bg').toggleClass('active');
-           });
-       });
-   </script>
+    <script type="text/javascript">
+        $(document).ready(function () {          
+            //$('#sidebar').toggleClass('active');
+            //$('.bg').toggleClass('active');
+
+
+            //$('#sidebarCollapse').on('click', function () {
+            //    $('#sidebar').toggleClass('active');
+            //    $('.bg').toggleClass('active');
+            //});
+
+            $('.btn-menu').on('click', function (e) {
+                window.location.href = this.dataset.whereto;
+            });
+        });
+    </script>
 </body>
 </html>

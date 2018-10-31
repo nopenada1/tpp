@@ -8,8 +8,27 @@ namespace TPP.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult EventCalender()
+        {
+            return View();
+        }
+
+        public ActionResult PhotoGallery()
+        {
+            return View();
+        }
+
+        public ActionResult ClubRules()
+        {
+            return View();
+        }
+
+        public ActionResult ContactUs()
         {
             return View();
         }
